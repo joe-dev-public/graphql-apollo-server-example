@@ -1,0 +1,50 @@
+// Todo: research TSConfig bases: https://github.com/tsconfig/bases
+// Which looks like community-maintained.. base configurations (sensible
+// basic settings/defaults) for tsconfig, per runtime environment.
+
+// This isn't strictly JSON (it's possibly JSON with comments?), and either
+// way it's apparently parsed with TS's own parser. Which is to say: comments
+// are allowed!
+{
+  "compilerOptions": {
+    // For a simple project template, rootDirs probably isn't needed?
+    // https://www.typescriptlang.org/tsconfig/#rootDirs
+    // "rootDirs": ["src"],
+
+    "outDir": "dist",
+
+    // Not sure if lib is necessary? "target" docs suggest it'll be set to
+    // whatever target is set to by default
+    // https://www.typescriptlang.org/tsconfig/#lib
+    // "lib": ["ES2020"],
+
+    // The JS version you want to target. Depends on the environment your JS
+    // code will run in, and what that can support.
+    // https://www.typescriptlang.org/tsconfig/#target
+    "target": "ES2020",
+
+    // "You very likely want "nodenext" ...", and Fireship's guide would agree!
+    // https://www.typescriptlang.org/tsconfig/#module
+    // https://www.youtube.com/watch?v=H91aqUHn8sE
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    // Not needed if I'm not using CommonJS/AMD/UMD modules?
+    // https://www.typescriptlang.org/tsconfig/#esModuleInterop
+    // "esModuleInterop": true,
+
+    // "By default all visible ”@types” packages are included in your
+    // compilation" -- but, importantly (I think!), if you DO specify this
+    // list, then ONLY the ones specified will be imported. So it's a good
+    // way of keeping things clean? (Just importing "node" here based on
+    // Apollo's suggestion.)
+    // https://www.typescriptlang.org/tsconfig/#types
+    "types": ["node"],
+
+    // Helps with debugging
+    // https://www.typescriptlang.org/tsconfig/#sourceMap
+    "sourceMap": true
+  }
+  // Is include required?
+  // "include": ["src/**/*"],
+}
