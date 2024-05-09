@@ -18,5 +18,6 @@ export const typeDefs = `#graphql
   # A *bit* like endpoints:
   type Query {
     todos: [Todo]
+    todo(id: ID!): Todo
   }
 `;

@@ -13,12 +13,12 @@ import { typeDefs } from "./schema.js";
 // store, e.g. PostgreSQL/another database, etc.)
 const todosData = [
   {
-    id: 1,
+    id: "1",
     content: "Hello world",
     tags: ["useful", "important"],
     complete: true,
   },
-  { id: 2, content: "foo bar", tags: ["test"], complete: false },
+  { id: "2", content: "foo bar", tags: ["test"], complete: false },
 ];
 
 // "Resolvers define how to fetch the types defined in your schema."
@@ -28,6 +28,7 @@ const todosData = [
 const resolvers = {
   Query: {
     todos: () => todosData,
+    todo: (_, args) => todosData.find((todo) => todo.id === args.id),
   },
 };
 
